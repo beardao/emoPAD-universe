@@ -17,7 +17,7 @@ openclaw skill to use multi-modal signals to display real-time emotion PAD coord
 - **emoNebula**: 持续实时监测情绪 PAD，每隔 5 分钟生成并发送情绪星云图
 - **实时状态**: 随时获取当前情绪 PAD 和传感器连接状态
 - **手动截图**: 随时生成情绪星云图
-<video src="emoPAD.mp4" controls width="100%"></video>
+[![点击播放视频](./emologo.png)](./emoPAD.mp4)
 
 ## 支持的硬件
 
