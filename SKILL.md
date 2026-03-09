@@ -5,7 +5,7 @@ description: |
 
   Helps users locate emotions in the PAD (Pleasure-Arousal-Dominance) coordinate system,
   and provides emoNebula feature: continuous real-time emotion PAD monitoring, with a popup window
-displaying the emotion nebula chart every 5 minutes.
+  displaying the emotion nebula chart every 5 minutes.
 
   ## Cross-Platform Support
   
