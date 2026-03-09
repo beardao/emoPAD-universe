@@ -18,8 +18,7 @@ openclaw skill to use multi-modal signals to display real-time emotion PAD coord
 - **实时状态**: 随时获取当前情绪 PAD 和传感器连接状态
 - **手动截图**: 随时生成情绪星云图
 
-[![点击播放](./emoPAD.png)](./emoPAD.mp4)
-*点击上方图片播放视频*
+[▶️ 在 Bilibili 观看演示](https://www.bilibili.com/video/BV1QKPUz7EHV/?spm_id_from=333.337.search-card.all.click)
 
 ## 支持的硬件
 
