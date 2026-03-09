@@ -1,137 +1,138 @@
 ---
 name: emoPAD-universe
 description: |
-  emoPAD Universe - 情绪宇宙技能
+  emoPAD Universe - Emotion Universe Skill
 
-  帮助用户在情绪 PAD（Pleasure-Arousal-Dominance）坐标系中定位情绪，
-  并提供 emoNebula 功能：持续实时监测情绪 PAD，每隔 5 分钟弹出窗口显示情绪星云图。
+  Helps users locate emotions in the PAD (Pleasure-Arousal-Dominance) coordinate system,
+  and provides emoNebula feature: continuous real-time emotion PAD monitoring, with a popup window
+displaying the emotion nebula chart every 5 minutes.
 
-  ## 跨平台支持
+  ## Cross-Platform Support
   
-  支持 Linux 和 Windows 操作系统：
-  - **Linux**: 使用 eog (Eye of GNOME) 显示图片窗口
-  - **Windows**: 使用系统默认的图片查看器显示
+  Supports Linux and Windows operating systems:
+  - **Linux**: Uses eog (Eye of GNOME) to display image windows
+  - **Windows**: Uses the system default image viewer to display
 
-  ## 自动启动
+  ## Auto-Start
   
-  安装此skill后，emoPAD服务和emoNebula会自动启动，无需手动操作。
+  After installing this skill, the emoPAD service and emoNebula will start automatically, no manual operation needed.
 
-  ## 支持的硬件
+  ## Supported Hardware
   
-  - EEG: KSEEG102 (蓝牙 BLE)
-  - PPG: Cheez PPG 传感器 (串口)
-  - GSR: Sichiray GSR V2 (串口)
+  - EEG: KSEEG102 (Bluetooth BLE)
+  - PPG: Cheez PPG Sensor (Serial)
+  - GSR: Sichiray GSR V2 (Serial)
   
-  理论上类似的设备都能用。未来将逐步增加对主流品牌的支持，包括：
-  - Muse 系列脑电设备
-  - Emotiv 脑电设备
-  - Oura Ring 智能戒指
-  - Whoop 智能手环
-  - 其他主流脑电设备和智能穿戴设备
+  Theoretically, similar devices should also work. Future versions will gradually add support for mainstream brands, including:
+  - Muse series EEG devices
+  - Emotiv EEG devices
+  - Oura Ring smart ring
+  - Whoop smart wristband
+  - Other mainstream EEG devices and wearable devices
 
-  ## 安装依赖
+  ## Dependency Installation
   
-  安装skill时会自动检查并安装所需依赖，无需手动操作。
+  Dependencies will be checked and installed automatically when installing the skill, no manual operation needed.
 
-  ## 使用
+  ## Usage
   
-  - `openclaw emopad status` - 获取当前 PAD 状态
-  - `openclaw emopad snapshot` - 手动生成情绪星云图
-  - `openclaw emopad stop` - 停止服务
-  - `openclaw emopad start` - 重新启动服务
+  - `openclaw emopad status` - Get current PAD status
+  - `openclaw emopad snapshot` - Manually generate emotion nebula chart
+  - `openclaw emopad stop` - Stop service
+  - `openclaw emopad start` - Restart service
 
-  ## 重要说明
+  ## Important Notes
   
-  **关于情绪 PAD 计算**: 目前是基于启发式方法，根据大量文献总结得出的映射关系。
-  这种方法暂时无法体现个性化差异。未来版本将加入个性化校准训练模块，真正实现个性化情绪识别。
+  **About Emotion PAD Calculation**: Currently based on heuristic methods, mapping relationships summarized from extensive literature.
+  This method temporarily cannot reflect individual differences. Future versions will introduce personalized calibration training modules to truly achieve personalized emotion recognition.
 ---
 
 # emoPAD Universe
 
-## 跨平台支持
+## Cross-Platform Support
 
-emoPAD Universe 支持以下操作系统：
+emoPAD Universe supports the following operating systems:
 
-| 操作系统 | 图片查看器 | 说明 |
+| OS | Image Viewer | Notes |
 |---------|-----------|------|
-| Linux | eog (Eye of GNOME) | 窗口模式，可关闭 |
-| Windows | 系统默认图片查看器 | 窗口模式，可关闭 |
+| Linux | eog (Eye of GNOME) | Window mode, closable |
+| Windows | System default image viewer | Window mode, closable |
 
-## 自动启动
+## Auto-Start
 
-安装此skill后，会自动执行以下操作：
-1. 检查并安装所需的Python依赖
-2. 启动emoPAD服务（监听 http://127.0.0.1:8766）
-3. 启动emoNebula自动报告（每5分钟弹出窗口显示情绪星云图）
+After installing this skill, the following operations will be performed automatically:
+1. Check and install required Python dependencies
+2. Start emoPAD service (listening on http://127.0.0.1:8766)
+3. Start emoNebula auto-report (popup window displaying emotion nebula chart every 5 minutes)
 
-无需手动启动，安装完成后即可使用。
+No manual start needed, ready to use after installation.
 
-## 工具
+## Tools
 
 ### emopad_status
 
-获取当前情绪 PAD 状态和传感器连接情况
+Get current emotion PAD status and sensor connection status
 
-**描述**: 返回愉悦度(Pleasure)、唤醒度(Arousal)、支配度(Dominance)三个维度的数值，以及EEG、PPG、GSR三个传感器的连接状态
+**Description**: Returns values for three dimensions: Pleasure, Arousal, Dominance, and connection status of EEG, PPG, GSR sensors
 
-**参数**: 无
+**Parameters**: None
 
-**返回**: 格式化的情绪状态文本，包含传感器连接状态
+**Returns**: Formatted emotion status text, including sensor connection status
 
 ---
 
 ### emopad_snapshot
 
-生成当前情绪星云图
+Generate current emotion nebula chart
 
-**描述**: 生成 3D PAD 立方体可视化截图
+**Description**: Generate 3D PAD cube visualization screenshot
 
-**参数**: 无
+**Parameters**: None
 
-**返回**: 
-- 状态消息
-- PNG 图片数据
+**Returns**: 
+- Status message
+- PNG image data
 
 ---
 
 ### emopad_start_nebula
 
-启动 emoNebula 自动报告
+Start emoNebula auto-report
 
-**描述**: 每 5 分钟自动生成并弹出窗口显示情绪星云图。需要至少2个传感器连接才会显示图片，否则显示数据缺失提醒。
+**Description**: Automatically generate and display emotion nebula chart in popup window every 5 minutes. Requires at least 2 sensors connected to display image, otherwise shows data missing reminder.
 
-**参数**: 无
+**Parameters**: None
 
-**返回**: 状态消息
+**Returns**: Status message
 
 ---
 
 ### emopad_stop_nebula
 
-停止 emoNebula 自动报告
+Stop emoNebula auto-report
 
-**描述**: 停止自动显示情绪星云图
+**Description**: Stop automatically displaying emotion nebula chart
 
-**参数**: 无
+**Parameters**: None
 
-**返回**: 状态消息
+**Returns**: Status message
 
-## 配置
+## Configuration
 
 ```yaml
-serial_port: /dev/ttyACM0      # 串口设备路径 (Linux)
-# serial_port: COM3            # 串口设备路径 (Windows)
-baudrate: 115200               # 串口波特率
-eeg_window_sec: 2              # EEG数据窗口（秒）
-ppg_gsr_window_sec: 60         # PPG/GSR数据窗口（秒）
-hop_sec: 2                     # 计算间隔（秒）
-history_length: 120            # 历史数据点数量
-nebula_interval: 300           # 发送间隔（秒）
-service_host: 127.0.0.1        # 服务监听地址
-service_port: 8766             # 服务监听端口
+serial_port: /dev/ttyACM0      # Serial device path (Linux)
+# serial_port: COM3            # Serial device path (Windows)
+baudrate: 115200               # Serial baudrate
+eeg_window_sec: 2              # EEG data window (seconds)
+ppg_gsr_window_sec: 60         # PPG/GSR data window (seconds)
+hop_sec: 2                     # Calculation interval (seconds)
+history_length: 120            # Number of historical data points
+nebula_interval: 300           # Send interval (seconds)
+service_host: 127.0.0.1        # Service listening address
+service_port: 8766             # Service listening port
 ```
 
-## 依赖
+## Dependencies
 
 - mne
 - heartpy
@@ -148,31 +149,31 @@ service_port: 8766             # 服务监听端口
 - requests
 - pyyaml
 
-## 硬件支持
+## Hardware Support
 
-### 当前支持的设备
+### Currently Supported Devices
 
-| 类型 | 型号 | 连接方式 |
+| Type | Model | Connection |
 |------|------|----------|
-| EEG | KSEEG102 | 蓝牙 BLE |
-| PPG | Cheez PPG 传感器 | 串口 |
-| GSR | Sichiray GSR V2 | 串口 |
+| EEG | KSEEG102 | Bluetooth BLE |
+| PPG | Cheez PPG Sensor | Serial |
+| GSR | Sichiray GSR V2 | Serial |
 
-### 未来计划支持的设备
+### Future Planned Support
 
-- Muse 系列脑电设备
-- Emotiv 脑电设备
-- Oura Ring 智能戒指
-- Whoop 智能手环
-- 其他主流脑电设备和智能穿戴设备
+- Muse series EEG devices
+- Emotiv EEG devices
+- Oura Ring smart ring
+- Whoop smart wristband
+- Other mainstream EEG devices and wearable devices
 
-## 关于情绪 PAD 计算
+## About Emotion PAD Calculation
 
-**重要说明**: 目前情绪 PAD 的计算是基于启发式方法，根据大量文献总结得出的映射关系。
+**Important Note**: Currently, emotion PAD calculation is based on heuristic methods, mapping relationships summarized from extensive literature.
 
-这种方法的特点：
-- ✅ 基于科学文献的统计规律
-- ✅ 适用于一般人群的情绪识别
-- ⚠️ 暂时无法体现个性化差异
+Characteristics of this method:
+- ✅ Based on statistical patterns from scientific literature
+- ✅ Suitable for emotion recognition in general population
+- ⚠️ Temporarily cannot reflect individual differences
 
-**未来改进**: 将在新版本中引入个性化校准训练模块，通过用户特定的数据训练，实现真正的个性化情绪识别。
+**Future Improvements**: Will introduce personalized calibration training modules in new versions, through user-specific data training, to achieve true personalized emotion recognition.
